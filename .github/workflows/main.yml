@@ -64,7 +64,7 @@ jobs:
         channels: conda-forge,bioconda,nodefaults
         channel-priority: strict
     - name: Install Snakemake
-      run: mamba install python=3.9 snakemake==7.16 
+      run: mamba env create -f environment.yml
     - name: Run workflow
       run: |
         mkdir -p ${{ env.SNAKEMAKE_OUTPUT_CACHE }}
