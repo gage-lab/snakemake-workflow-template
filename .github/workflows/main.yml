@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 env:
-  SNAKEMAKE_OUTPUT_CACHE: $GITHUB_WORKSPACE/snakemake_cache
+  SNAKEMAKE_OUTPUT_CACHE: snakemake_cache
 
 jobs:
   Formatting:
@@ -34,12 +34,16 @@ jobs:
         args: "--lint"
 
   Testing: 
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
     defaults:
       run:
         shell: bash -l {0}
     needs:
       - Formatting
+      - Linting
     steps: 
     - uses: actions/checkout@v3
       with:
@@ -50,7 +54,7 @@ jobs:
       with:
         path: ${{ env.SNAKEMAKE_OUTPUT_CACHE }}
         key: ${{ runner.os }}-sm
-    - name: Install and setup Mamba
+    - name: Install Mamba
       uses: conda-incubator/setup-miniconda@v2
       with:
         miniforge-variant: Mambaforge
