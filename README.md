@@ -11,6 +11,9 @@ A Snakemake workflow for `<description>`
 
 ## TODO
 
-* Replace `<owner>` and `<repo>` everywhere in the template (also under .github/workflows) with the correct `<repo>` name and owning user or organization.
-* Replace `<name>` with the workflow name (can be the same as `<repo>`).
-* Replace `<description>` with a description of what the workflow does.
+- Install dependencies: `conda env create -f environment.yml -n <name>`
+- Activate the environment: `conda activate <name>`
+- Install precommits: `pre-commit install`
+- Replace `<owner>` and `<repo>` everywhere in the template (also under .github/workflows) with the correct `<repo>` name and owning user or organization.
+- Replace `<name>` with the workflow name (can be the same as `<repo>`).
+- Replace `<description>` with a description of what the workflow does.
