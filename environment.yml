@@ -8,3 +8,4 @@ dependencies:
   - snakefmt
   - pandas
   - biopython
+  - pre-commit
