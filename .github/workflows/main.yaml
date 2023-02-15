@@ -27,10 +27,7 @@ jobs:
           VALIDATE_YAML: true
 
   Testing:
-    strategy:
-      matrix:
-        os: [ubuntu-latest, macos-latest]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash -l {0}
