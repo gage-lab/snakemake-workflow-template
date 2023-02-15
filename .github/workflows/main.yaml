@@ -36,11 +36,11 @@ jobs:
         shell: bash -l {0}
     needs:
       - Formatting
-      - Linting
     steps:
       - uses: actions/checkout@v3
         with:
           lfs: true
+          submodules: recursive
       # TODO: optionally enable cache
       # - name: Snakemake cache
       #   id: cache-sm
