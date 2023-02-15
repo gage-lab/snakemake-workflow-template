@@ -36,6 +36,7 @@ jobs:
         shell: bash -l {0}
     needs:
       - Formatting
+      - Linting
     steps:
       - uses: actions/checkout@v3
         with:
@@ -60,7 +61,7 @@ jobs:
           python-version: 3.9
           channels: conda-forge,bioconda,nodefaults
           channel-priority: strict
-          environment-file: environment.yml
+          environment-file: environment.yaml
       - name: Generate test data
         run: cd .test/ngs-test-data && snakemake all --use-conda --cores 2
       - name: Run workflow
